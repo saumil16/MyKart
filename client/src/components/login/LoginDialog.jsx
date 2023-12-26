@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Box, Dialog, TextField, Button, Typography,styled } from "@mui/material";
-
-import { authenticateSignup } from "../../service/api";
+import { authenticateSignup, authenticateLogin } from "../../service/api";
+import { DataContext } from "../../context/dataProvider";
 
 const Component = styled(Box)`
     height: 70vh;
@@ -62,6 +62,14 @@ const CreateAccountText = styled(Typography)`
     cursor: pointer;
 `;
 
+const Error = styled(Typography)`
+    font-size:10px;
+    color: #FF6161;
+    line-height: 0;
+    margin-top: 10px;
+    font-weight: 600;
+`;
+
 const AccountValue = {
     login:{
         view: 'login',
@@ -84,15 +92,24 @@ const signupInitialValue = {
     mobile: ''
 }
 
+const loginInitialValue = {
+    username: '',
+    password: ''
+}
+
 
 const LoginDialog = ({open,setOpen}) =>{
 
     const [account, toggleAccount] = useState(AccountValue.login);
     const [signup, setSignup] = useState(signupInitialValue);
+    const [login, setLogin] = useState(loginInitialValue);
+    const [error,setError] = useState(false);
+    const {setAccount} = useContext(DataContext);
 
     const handleClose = () =>{
         toggleAccount(AccountValue.login);
         setOpen(false);
+        setError(false);
     }
 
     const toggleSignup = () => {
@@ -107,11 +124,27 @@ const LoginDialog = ({open,setOpen}) =>{
         setSignup({...signup, [e.target.name]: e.target.value});
     }
 
-
     const signupUser = async() =>{
        let response = await authenticateSignup(signup);
        if(!response) return;
        handleClose();
+       setAccount(signup.firstname);
+    }
+
+    const onValueChange = (e) =>{
+        setLogin({...login,[e.target.name]: e.target.value});
+    }
+
+    const loginUser = async() =>{
+        let response = await authenticateLogin(login);
+        console.log(response);
+        if(response.status === 200){
+            handleClose();
+            setAccount(response.data.data.firstname);
+        }
+        else{
+            setError(true);
+        }
     }
 
     return(
@@ -125,10 +158,11 @@ const LoginDialog = ({open,setOpen}) =>{
                     {
                         account.view === 'login' ?
                         <Wrapper>
-                        <TextField variant="outlined" label="Enter Email or Mobile Number"/>
-                        <TextField variant="outlined" label="Enter Password"/>
+                        <TextField variant="outlined" onChange={ (e) => onValueChange(e)} name='username' label="Enter Username"/>
+                        <TextField variant="outlined" onChange={ (e) => onValueChange(e)} name='password' label="Enter Password"/>
+                        {error && <Error>Please enter valid username or password</Error>}
                         <Text>By contnuing you are agree to MyKart's Terms of use and Privacy Policy.</Text>
-                        <LoginButton>Login</LoginButton>
+                        <LoginButton onClick={() => loginUser()}>Login</LoginButton>
                         <Typography style={{textAlign: 'center'}}>OR</Typography>
                         <RequestOtp>Request OTP</RequestOtp>
                         <CreateAccountText onClick={() => toggleSignup()} style={{marginTop: '50px'}}>New to MyKart, create account !</CreateAccountText>
