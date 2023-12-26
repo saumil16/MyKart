@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clothing Size Calculator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div id="sizeCalculator">
+    <h1>Clothing Size Calculator</h1>
+    <form>
+      <label for="age">Age:</label>
+      <input type="number" id="age" placeholder="Enter your age" required>
+
+      <label for="gender">Gender:</label>
+      <select id="gender" required>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+      </select>
+
+      <label for="height">Height (cm):</label>
+      <input type="number" id="height" placeholder="Enter your height" required>
+
+      <label for="chestSize">Chest Size (cm):</label>
+      <input type="number" id="chestSize" placeholder="Enter your chest size" required>
+
+      <button type="button" onclick="calculateSize()">Calculate Size</button>
+
+      <div id="result"></div>
+    </form>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
