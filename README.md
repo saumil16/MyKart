@@ -1,7 +1,7 @@
 # MyKart: E-Commerce Platform - MERN Stack
 
 ## Overview
-A full-stack e-commerce platform built using the MERN (MongoDB, Express.js, React.js, Node.js) stack. It aims to provide a seamless online shopping experience to the users.
+A full-stack e-commerce platform built using the MERN (MongoDB, Express.js, React.js, Node.js) stack provides users a seamless online shopping experience.
 
 ## Features
 
@@ -25,7 +25,7 @@ A full-stack e-commerce platform built using the MERN (MongoDB, Express.js, Reac
 
 #### Checkout and Payments:
 - Secure checkout process.
-- Integration with popular payment gateways (e.g.: ).
+- Integration with popular payment gateways (e.g.: Paytm ).
 
 #### Product Reviews and Ratings:
 - Allow users to leave reviews and ratings for products.
@@ -74,5 +74,16 @@ Install dependencies:
 Step1: Run App.js
 
 Step2: Run the following commands on the terminal:-
-- npm install @mui/material @emotion/react @emotion/styled 
+- npm install @mui/material @emotion/react @emotion/styled
+- cd client
+- npm i nodemon
+- npm i dotenv
+- npm i cors
+- npm i mongodb
+- npm i mongoose
+- npm i express
+- npm i body-parser
+- npm i react-multi-carousel
 - npm i axios
+- npm start
+  
