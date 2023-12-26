@@ -71,6 +71,7 @@ Step1: Run App.js
 
 Step2: Run the following commands on the terminal:-
 - npm install @mui/material @emotion/react @emotion/styled
+
 along with all the dependencies similarly
 
   
