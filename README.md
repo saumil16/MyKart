@@ -70,3 +70,9 @@ Install dependencies:
 2. npx
 3. axios
 4. etcm
+
+Step1: Run App.js
+
+Step2: Run the following commands on the terminal:-
+- npm install @mui/material @emotion/react @emotion/styled 
+- npm i axios
