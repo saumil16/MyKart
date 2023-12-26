@@ -65,25 +65,12 @@ A full-stack e-commerce platform built using the MERN (MongoDB, Express.js, Reac
 
 
 ## To run:
-Install dependencies:
-1. npm
-2. npx
-3. axios
-4. etcm
+Install all the dependencies present in the packet.json file of client and server folders followed by npm start
 
 Step1: Run App.js
 
 Step2: Run the following commands on the terminal:-
 - npm install @mui/material @emotion/react @emotion/styled
-- cd client
-- npm i nodemon
-- npm i dotenv
-- npm i cors
-- npm i mongodb
-- npm i mongoose
-- npm i express
-- npm i body-parser
-- npm i react-multi-carousel
-- npm i axios
-- npm start
+along with all the dependencies similarly
+
   
