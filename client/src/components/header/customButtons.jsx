@@ -8,20 +8,27 @@ import LoginDialog from '../login/LoginDialog';
 import { DataContext } from '../../context/dataProvider';
 import Profile from './profile';
 
-const Wrapper = styled(Box)`
-    display: flex;
-    margin: 0 3% 0 auto;
+const Wrapper = styled(Box)(({theme}) => ({
+    display: 'flex',
+    margin: '0 3% 0 auto',
 
-    &> button, &> p,&> div{
-        margin-right: 40px;
-        font-size: 16px;
-        align-items: center;
+    '&> *': {
+        marginRight: 40,
+        fontSize: 16,
+        alignItems: 'center',
+    },
+    [theme.breakpoints.down('md')]:{
+        display: 'block'
     }
-`;
+}));
 
-const Container = styled(Box)`
-    display: flex;
-`;
+const Container = styled(Box)(({theme}) => ({
+    display: 'flex',
+    [theme.breakpoints.down('md')]:{
+        display: 'block'
+    }
+}));
+
 
 const StyledButton = styled(Button)`
     padding: 5px 30px;

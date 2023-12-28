@@ -28,4 +28,4 @@ Connection(username,password);
 
 app.listen(PORT,()=>console.log(`Server Running successfully on port ${PORT}`));
 
-DefaultData();
+// DefaultData();
