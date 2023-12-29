@@ -8,6 +8,8 @@ import LoginDialog from '../login/LoginDialog';
 import { DataContext } from '../../context/dataProvider';
 import Profile from './profile';
 
+import {Link} from 'react-router-dom';
+
 const Wrapper = styled(Box)(({theme}) => ({
     display: 'flex',
     margin: '0 3% 0 auto',
@@ -22,8 +24,10 @@ const Wrapper = styled(Box)(({theme}) => ({
     }
 }));
 
-const Container = styled(Box)(({theme}) => ({
+const Container = styled(Link)(({theme}) => ({
     display: 'flex',
+    color: 'inherit',
+    textDecoration: 'none',
     [theme.breakpoints.down('md')]:{
         display: 'block'
     }
@@ -59,7 +63,7 @@ const CustomButtons = () => {
             <Typography style={{marginTop: 3, width:135 }}>Become a Seller</Typography>
             <Typography style={{marginTop: 3}}>More</Typography>
 
-            <Container>
+            <Container to={'/cart'}>
                 <ShoppingCart />
                 <Typography>Cart</Typography>
             </Container>
