@@ -6,9 +6,12 @@ import CartItem from "./cartItem";
 import TotalView from "./totalview";
 import EmptyCart from "./emptyCart";
 
-const Container = styled(Grid)`
-    padding: 30px 135px;
-`;
+const Container = styled(Grid)(({theme}) => ({
+    padding: '30px 135px',
+    [theme.breakpoints.down('md')]:{
+        padding: '30px 0'
+    }
+}));
 
 const Header =styled(Box)`
     padding: 15px 24px;
@@ -31,6 +34,13 @@ const PalceOrderButton = styled(Button)`
     height: 50px;
 `;
 
+const LeftComponent = styled(Grid) (({theme}) => ({
+    paddingRight: '15px',
+    [theme.breakpoints.down('md')]: {
+        marginBottom: '15px'
+    }
+}));
+
 const Cart = () => {
 
     const { CartItems } = useSelector(state => state.cart);
@@ -41,7 +51,7 @@ const Cart = () => {
             {
                 CartItems.length ?
                     <Container container>
-                        <Grid item lg={9} md={9} sm={12} sx={12}>
+                        <LeftComponent item lg={9} md={9} sm={12} sx={12}>
                             <Header>
                                 <Typography style={{fontWeight: 600, fontSize: 22}}>My Cart ({CartItems?.length})</Typography>
                             </Header>
@@ -53,7 +63,7 @@ const Cart = () => {
                             <ButtonWrapper>
                                 <PalceOrderButton variant="contained">Place Order</PalceOrderButton>
                             </ButtonWrapper>
-                        </Grid>
+                        </LeftComponent>
                         <Grid item lg={3} md={3} sm={12} sx={12}>
                             <TotalView CartItems={CartItems} />
                         </Grid>
