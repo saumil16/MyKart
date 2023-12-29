@@ -11,9 +11,9 @@ import Profile from './profile';
 const Wrapper = styled(Box)(({theme}) => ({
     display: 'flex',
     margin: '0 3% 0 auto',
-
+    
     '&> *': {
-        marginRight: 40,
+        marginRight: '40px !important',
         fontSize: 16,
         alignItems: 'center',
     },
