@@ -3,8 +3,8 @@
 import mongoose from "mongoose";
 
 
-const Connection = async (username,password) => {
-    const URL = `mongodb+srv://${username}:${password}@mykart-web.ebredwe.mongodb.net/?retryWrites=true&w=majority`;
+const Connection = async (URL) => {
+
     try{
         await mongoose.connect(URL,{});
         console.log('Database Connected Successfully');

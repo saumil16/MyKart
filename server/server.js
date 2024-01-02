@@ -8,9 +8,12 @@ import Routes from './routes/route.js';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 
+const Username = process.env.DB_username;
+const Password = process.env.DB_password;
 
+const PORT= process.env.PORT || 8000;
 
-const PORT=8000;
+const URL = process.env.MONGODB_URL || `mongodb+srv://${Username}:${Password}@mykart-web.ebredwe.mongodb.net/?retryWrites=true&w=majority`;
 
 const app = express();
 
@@ -21,10 +24,11 @@ app.use('/', Routes);
 
 dotenv.config();
 
-const username = process.env.DB_username;
-const password = process.env.DB_password;
+Connection(URL);
 
-Connection(username,password);
+if(process.env.NODE_ENV === 'production'){
+    app.use(express.static('client/build'))
+}
 
 app.listen(PORT,()=>console.log(`Server Running successfully on port ${PORT}`));
 
